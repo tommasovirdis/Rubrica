@@ -1,0 +1,53 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ContattoTest {
+
+    @Test
+    void testCostruttore() {
+        Contatto contatto = new Contatto("Rossi", "Mario", "3331234567", "011123456", "mario.rossi@example.com");
+
+        assertEquals("Rossi", contatto.getCognome());
+        assertEquals("Mario", contatto.getNome());
+        assertEquals("3331234567", contatto.getNumeroCellulare());
+        assertEquals("011123456", contatto.getTelefonoFisso());
+        assertEquals("mario.rossi@example.com", contatto.getIndirizzoEmail());
+    }
+
+    // Aggiungi altri test se necessario
+}
+
+
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RubricaTelefonicaTest {
+
+    private RubricaTelefonica rubrica;
+
+    @BeforeEach
+    void setUp() {
+        rubrica = new RubricaTelefonica();
+    }
+
+    @Test
+    void testAggiungiContatto() {
+        rubrica.aggiungiContatto("Rossi", "Mario", "3331234567", "011123456", "mario.rossi@example.com");
+        assertEquals(1, rubrica.getListaContatti().size());
+        assertEquals("Mario", rubrica.getListaContatti().get(0).getNome());
+    }
+
+    @Test
+    void testRimuoviContatto() {
+        rubrica.aggiungiContatto("Rossi", "Mario", "3331234567", "011123456", "mario.rossi@example.com");
+        rubrica.rimuoviContatto("Rossi", "Mario");
+        assertEquals(0, rubrica.getListaContatti().size());
+    }
+
+    // Aggiungi altri test se necessario
+}
+
+
